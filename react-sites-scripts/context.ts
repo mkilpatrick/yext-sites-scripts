@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import { ModuleNode } from "vite";
 import { Page } from "./ssr/types";
 
 type Route = {
