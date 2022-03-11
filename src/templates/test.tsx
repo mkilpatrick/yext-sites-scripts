@@ -1,3 +1,6 @@
+import { GetServerSideProps } from "../../react-sites-scripts/ssr/types";
+import fs from "fs";
+
 export const config = {
   name: "Product Test",
   hydrate: true,
@@ -20,12 +23,18 @@ export const config = {
   },
 };
 
-const Test = () => {
-    return (
-      <div>
-        Hello from testttttt
-      </div>
-    );
-  };
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const cogData = fs.readFileSync('localData/fastfood__631a91f020286f3ddf808a2dd52ce209.json')
   
-  export default Test;
+//   return JSON.parse(cogData.toString());
+// };
+
+const Test = (props: any) => {
+  return (
+    <div>
+      Hello from {props.name}
+    </div>
+  );
+};
+
+export default Test;

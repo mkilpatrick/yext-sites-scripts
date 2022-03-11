@@ -1,3 +1,4 @@
+import { getLocalData } from './getLocalData';
 import { TEMPLATE_PATH } from './constants';
 import fs from "fs";
 import path from "path";
@@ -7,6 +8,7 @@ type Props = {
   url: string;
   vite: ViteDevServer;
   templateFilename: string;
+  entityId: string;
 };
 
 type PageLoaderResult = {
@@ -20,6 +22,7 @@ export const pageLoader = async ({
   url,
   vite,
   templateFilename,
+  entityId,
 }: Props): Promise<PageLoaderResult> => {
   // 1. Read index.html
   let template = fs.readFileSync(
@@ -40,7 +43,10 @@ export const pageLoader = async ({
     vite.ssrLoadModule(`/react-sites-scripts/entry.tsx`),
   ]);
 
+  // TODO: Get the props dynamically here
   let props = {};
+  // Currently assuming the entityId matches the uid of the stream data
+  props = await getLocalData(entityId);
   if (getServerSideProps) props = await getServerSideProps();
 
   return { template, Page, props, App };

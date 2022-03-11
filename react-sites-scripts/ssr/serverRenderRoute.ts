@@ -25,6 +25,7 @@ export const serverRenderRoute =
         url,
         vite,
         templateFilename,
+        entityId,
       });
       
       // render the component to its html

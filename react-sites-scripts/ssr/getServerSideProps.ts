@@ -15,6 +15,7 @@ export const getServerSideProps =
       url,
       vite,
       templateFilename: '',
+      entityId: '',
     });
 
     res.send(props);
