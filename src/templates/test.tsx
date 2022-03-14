@@ -1,5 +1,4 @@
 import { GetServerSideProps } from "../../react-sites-scripts/ssr/types";
-import fs from "fs";
 
 export const config = {
   name: "Product Test",
