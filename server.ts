@@ -13,9 +13,12 @@ async function createServer() {
   });
   // register vite's middleware
   app.use(vite.middlewares);
+  
+  // Ignore favicon requests if it doesn't exist
+  app.use(ignoreFavicon);
 
   app.use("/data/*", getServerSideProps({ vite }));
-  
+
   // when a page is requested, call our serverRenderRoute method
   app.use("*", serverRenderRoute({ vite }));
 
@@ -24,3 +27,11 @@ async function createServer() {
 }
 
 createServer();
+
+function ignoreFavicon(req: any, res: any, next: any) {
+  if (req.originalUrl.includes('favicon')) {
+    res.status(204).end();
+    return;
+  }
+  next();
+}
