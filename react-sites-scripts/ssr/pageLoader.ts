@@ -1,3 +1,4 @@
+import { generateTestData } from './generateTestData';
 import { getLocalData } from './getLocalData';
 import { TEMPLATE_PATH } from './constants';
 import fs from "fs";
@@ -9,6 +10,7 @@ type Props = {
   vite: ViteDevServer;
   templateFilename: string;
   entityId: string;
+  featureConfig: any,
 };
 
 type PageLoaderResult = {
@@ -23,6 +25,7 @@ export const pageLoader = async ({
   vite,
   templateFilename,
   entityId,
+  featureConfig,
 }: Props): Promise<PageLoaderResult> => {
   // 1. Read index.html
   let template = fs.readFileSync(
@@ -34,19 +37,23 @@ export const pageLoader = async ({
   //    also applies HTML transforms from Vite plugins, e.g. global preambles
   //    from @vitejs/plugin-react-refresh
   template = await vite.transformIndexHtml(url, template);
+  
   // 3. Load the server entry. vite.ssrLoadModule automatically transforms
   //    your ESM source code to be usable in Node.js! There is no bundling
   //    required, and provides efficient invalidation similar to HMR.
-
   const [{ default: Page, getServerSideProps, config }, { App }] = await Promise.all([
     vite.ssrLoadModule(`/${TEMPLATE_PATH}/${templateFilename}`),
     vite.ssrLoadModule(`/react-sites-scripts/entry.tsx`),
   ]);
 
-  // TODO: Get the props dynamically here
   let props = {};
-  // Currently assuming the entityId matches the uid of the stream data
+
+  // Call generate-test-data
+  await generateTestData(featureConfig, entityId);
+
+  // Get the props from the generate-test-data file
   props = await getLocalData(entityId);
+
   if (getServerSideProps) props = await getServerSideProps();
 
   return { template, Page, props, App };

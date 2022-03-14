@@ -1,3 +1,4 @@
+import { generateFeatureConfig } from './generateFeatureConfig';
 import { RequestHandler } from "express-serve-static-core";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
@@ -17,15 +18,15 @@ export const serverRenderRoute =
 
     const { feature, entityId } = urlToFeature(url);
     const templateFilename = await featureToTemplate(feature);
+    const featureConfig = await generateFeatureConfig();
 
     try {
       let { template, Page, App, props } = await pageLoader({
-        // pass the url, and vite to a pageLoader function
-        // we will make next
         url,
         vite,
         templateFilename,
         entityId,
+        featureConfig,
       });
       
       // render the component to its html
