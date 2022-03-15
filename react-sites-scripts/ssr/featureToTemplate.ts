@@ -1,14 +1,16 @@
 import { TEMPLATE_PATH } from "./constants";
 import { readdir } from "fs/promises";
 
+// Determines the template file of a given feature (from the exported config)
 export const featureToTemplate = async (feature: string): Promise<string> => {
     const dir = await readdir(`./${TEMPLATE_PATH}`);
     let templateFilename = 'index.tsx'; // fallback to index page
     for (const fileName of dir) {
         const filepath = `../../${TEMPLATE_PATH}/${fileName}`;
 
-        // Delete the cached module so a page refresh gets the updated module data (such as a change to the config's name)
-        delete require.cache[require.resolve(filepath)];
+        // Cache bust the module so a page refresh gets the updated module data
+        // (such as a change to the config's name).
+        await importFresh(filepath);
 
         const component = await import(filepath);
 
@@ -19,4 +21,11 @@ export const featureToTemplate = async (feature: string): Promise<string> => {
     }
 
     return templateFilename;
+};
+
+// Cache busts imported modules to allow for HMR.
+// https://ar.al/2021/02/22/cache-busting-in-node.js-dynamic-esm-imports/
+async function importFresh(modulePath: string) {
+    const cacheBustingModulePath = `${modulePath}?update=${Date.now()}`
+    return (await import(cacheBustingModulePath)).default
 };
