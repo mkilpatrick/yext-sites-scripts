@@ -1,9 +1,9 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
-import { serverRenderRoute } from "./react-sites-scripts/ssr/serverRenderRoute";
-import { getServerSideProps } from "./react-sites-scripts/ssr/getServerSideProps";
+import { serverRenderRoute } from "./yext-sites-scripts/ssr/serverRenderRoute";
+import { getServerSideProps } from "./yext-sites-scripts/ssr/getServerSideProps";
 
-async function createServer() {
+export const createServer = async () => {
   // creates a standard express app
   const app = express();
   
@@ -24,9 +24,7 @@ async function createServer() {
 
   // start the server on port 3000
   app.listen(3000, () => console.log("listening on :3000"));
-}
-
-createServer();
+};
 
 function ignoreFavicon(req: any, res: any, next: any) {
   if (req.originalUrl.includes('favicon')) {
@@ -34,4 +32,4 @@ function ignoreFavicon(req: any, res: any, next: any) {
     return;
   }
   next();
-}
+};

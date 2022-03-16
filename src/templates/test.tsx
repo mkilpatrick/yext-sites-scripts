@@ -1,4 +1,5 @@
-import { GetServerSideProps } from "../../react-sites-scripts/ssr/types";
+import { useState } from "react";
+import { GetServerSideProps } from "../../yext-sites-scripts/ssr/types";
 
 export const config = {
   name: "Product Test",
@@ -29,10 +30,16 @@ export const config = {
 // };
 
 const Test = (props: any) => {
+  const [num, setNum] = useState<number>(0);
+
   return (
-    <div>
-      Hello from {props.name}
-    </div>
+    <>
+      <div>
+        Hello from {props.name} wooo
+      </div>
+      <button onClick={() => setNum(num + 1)}>Click me</button>
+      Num: {num}
+    </>
   );
 };
 
