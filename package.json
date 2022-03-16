@@ -22,7 +22,7 @@
     "shelljs": "^0.8.5",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.2",
-    "vite": "^2.8.0",
+    "vite": "^2.8.6",
     "esm-module-paths": "^1.1.1"
   },
   "devDependencies": {

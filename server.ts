@@ -33,5 +33,3 @@ function ignoreFavicon(req: any, res: any, next: any) {
   }
   next();
 };
-
-createServer();

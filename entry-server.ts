@@ -1,4 +1,3 @@
 import { createServer } from "./server";
 
-
-createServer();
+await createServer();
