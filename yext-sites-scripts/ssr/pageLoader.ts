@@ -41,8 +41,6 @@ export const pageLoader = async ({
 
   // Get the entry file's directory relative to the current file's directory
   const entryDir = __dirname().replace(/\/[^\/]+$/,"");
-  console.log("dirname: " + __dirname());
-  console.log("entrydir: " + entryDir);
 
   // 3. Load the server entry. vite.ssrLoadModule automatically transforms
   //    your ESM source code to be usable in Node.js! There is no bundling
