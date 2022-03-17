@@ -26,6 +26,7 @@
     "esm-module-paths": "^1.1.1"
   },
   "devDependencies": {
+    "@types/babel__core": "^7.1.18",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
