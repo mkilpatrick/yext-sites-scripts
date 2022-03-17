@@ -8,7 +8,7 @@ type Route = {
 };
 
 // Can't use string interpolation here so src/templates is hardcoded
-const templates = import.meta.glob('../src/templates/*.(jsx|tsx)');
+const templates = import.meta.glob('/src/templates/*.(jsx|tsx)');
 
 export const routes: Route[] = Object.keys(templates).map((path) => {
   return {
