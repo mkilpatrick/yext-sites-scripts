@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/yext-sites-scripts/context.js"
+  },
   "engines": {
     "node": ">=16.14.0"
   },
