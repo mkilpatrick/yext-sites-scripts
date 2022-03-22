@@ -17,11 +17,13 @@
     "release": "npm-run-all release:* --parallel release:compile:*",
     "release:clean": "rm -rf dist && mkdir dist",
     "release:copy": "cp index.d.ts vite.config.ts dist/ && sed -e '/\"private\"/d' package.json > dist/package.json",
-    "release:compile:esm": "tsc"
+    "release:compile:esm": "tsc",
+    "prepare" : "npm run release"
   },
   "bin": {
     "yext-sites-scripts": "dist/bin/yext-sites-scripts.js"
   },
+  "files": ["dist/**/*"],
   "dependencies": {
     "express": "^4.17.3",
     "shelljs": "^0.8.5",
