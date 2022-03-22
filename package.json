@@ -20,7 +20,7 @@
     "release:compile:esm": "tsc"
   },
   "bin": {
-    "yext-sites-scripts": "dist/bin/yext-sites-scripts.js"
+    "yext-sites-scripts": "bin/yext-sites-scripts.js"
   },
   "dependencies": {
     "express": "^4.17.3",
