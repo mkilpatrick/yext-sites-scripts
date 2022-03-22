@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
   "engines": {
     "node": ">=16.14.0"
   },
@@ -13,7 +14,7 @@
     "preview": "vite preview",
     "release": "npm-run-all release:* --parallel release:compile:*",
     "release:clean": "rm -rf dist && mkdir dist",
-    "release:copy": "cp index.d.ts vite.config.ts dist/ && sed -e '/\"private\"/d' package.json > dist/package.json",
+    "release:copy": "cp vite.config.ts dist/ && sed -e '/\"private\"/d' package.json > dist/package.json",
     "release:compile:esm": "tsc",
     "prepare" : "npm run release"
   },

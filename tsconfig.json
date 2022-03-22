@@ -19,6 +19,6 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["yext-sites-scripts", "server.ts", "entry-server.ts", "bin", "scripts"],
+  "include": ["yext-sites-scripts", "index.ts", "server.ts", "entry-server.ts", "bin", "scripts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
