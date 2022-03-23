@@ -1,23 +1,42 @@
 import ReactDOM from "react-dom";
 import { Page } from "./ssr/types";
-import { createElement, useState } from "react";
-import { ReactSitesContext, routes } from "./context";
+import { createElement } from "react";
 
 type Props = {
   page?: Page;
 };
 
 export const App = ({ page }: Props) => {
-  let [activePage, setActivePage] = useState(page);
+  // let [activePage, setActivePage] = useState(page);
 
-  return (
-    <ReactSitesContext.Provider value={{ activePage, setActivePage }}>
-      {createElement(activePage?.component, activePage?.props)}
-    </ReactSitesContext.Provider>
-  );
+  // return (
+  //   <ReactSitesContext.Provider value={{ activePage, setActivePage }}>
+  //     {createElement(page?.component, page?.props)}
+  //   </ReactSitesContext.Provider>
+  // );
+
+  return createElement(page?.component, page?.props)
 };
 
 const hydrate = async () => {
+  type Route = {
+    name: string;
+    path: string;
+    getComponent: () => Promise<any>;
+  };
+  
+  // Can't use string interpolation here so src/templates is hardcoded
+  const templates = import.meta.glob('/src/templates/*.(jsx|tsx)');
+  
+  const routes: Route[] = Object.keys(templates).map((path) => {
+    return {
+      // get the filename from the path and remove its extension, default to index
+      name: path.split('/').pop()?.split('.')[0] || 'index',
+      path: path,
+      getComponent: templates[path]
+    }
+  });
+
   /**
    * Get the templateFilename from the template. See {@link ./ssr/serverRenderRoute.ts}.
    */
