@@ -17,7 +17,8 @@
     "jsx": "react-jsx",
     "outDir": "./dist",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "types": ["vite/client"],
   },
   "include": ["yext-sites-scripts", "index.ts", "server.ts", "entry-server.ts", "bin", "scripts"],
   "references": [{ "path": "./tsconfig.node.json" }]
