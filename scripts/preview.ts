@@ -1,4 +1,4 @@
 #! /usr/bin/env node
-var shell = require("shelljs");
+import shell from 'shelljs';
 
 shell.exec("npm run preview");
