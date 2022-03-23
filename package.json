@@ -15,7 +15,7 @@
     "release": "npm-run-all release:* --parallel release:compile:*",
     "release:clean": "rm -rf dist && mkdir dist",
     "release:copy": "cp vite.config.ts dist/ && sed -e '/\"private\"/d' package.json > dist/package.json",
-    "release:compile:esm": "tsc --module ES2022 --target ES2022",
+    "release:compile:esm": "tsc",
     "prepare" : "npm run release"
   },
   "bin": {
