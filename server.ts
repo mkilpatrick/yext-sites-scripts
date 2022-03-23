@@ -17,7 +17,10 @@ export const createServer = async () => {
     // Temporary solution https://github.com/vitejs/vite/issues/6215
     optimizeDeps: {
       include: ['react/jsx-runtime'],
-    }
+    },
+    esbuild: {
+      jsxInject: "import React from 'react'",
+    },
   });
   // register vite's middleware
   app.use(vite.middlewares);
