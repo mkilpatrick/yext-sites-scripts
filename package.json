@@ -1,6 +1,5 @@
 {
-  "name": "yext-sites-scripts",
-  "private": true,
+  "name": "@yext/yext-sites-scripts",
   "version": "0.0.1",
   "description": "The default React development toolchain provided by Yext",
   "keywords": [
