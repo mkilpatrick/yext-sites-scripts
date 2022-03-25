@@ -1,7 +1,13 @@
 {
   "name": "yext-sites-scripts",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "The default React development toolchain provided by Yext",
+  "keywords": [
+    "Yext",
+    "React"
+  ],
+  "author": "Yext",
   "type": "module",
   "types": "dist/index.d.ts",
   "main": "./dist/index.js",
@@ -17,6 +23,10 @@
     "release:copy": "cp vite.config.ts dist/ && sed -e '/\"private\"/d' package.json > dist/package.json",
     "release:compile:esm": "tsc",
     "prepare": "npm run release",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A",
+    "postversion": "git push && git push --tags",
     "format": "prettier --write \"yext-sites-scripts/**/*.ts\" \"yext-sites-scripts/**/*.tsx\" \"server.ts\"",
     "lint": "tslint -p tsconfig.json"
   },
