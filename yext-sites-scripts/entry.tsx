@@ -1,6 +1,6 @@
-import ReactDOM from "react-dom";
-import { Page } from "./ssr/types";
-import { createElement } from "react";
+import ReactDOM from 'react-dom';
+import { Page } from './ssr/types';
+import { createElement } from 'react';
 
 type Props = {
   page?: Page;
@@ -15,7 +15,7 @@ export const App = ({ page }: Props) => {
   //   </ReactSitesContext.Provider>
   // );
 
-  return createElement(page?.component, page?.props)
+  return createElement(page?.component, page?.props);
 };
 
 const hydrate = async () => {
@@ -24,17 +24,17 @@ const hydrate = async () => {
     path: string;
     getComponent: () => Promise<any>;
   };
-  
+
   // Can't use string interpolation here so src/templates is hardcoded
   const templates = import.meta.glob('/src/templates/*.(jsx|tsx)');
-  
+
   const routes: Route[] = Object.keys(templates).map((path) => {
     return {
       // get the filename from the path and remove its extension, default to index
       name: path.split('/').pop()?.split('.')[0] || 'index',
       path: path,
-      getComponent: templates[path]
-    }
+      getComponent: templates[path],
+    };
   });
 
   /**
@@ -42,9 +42,7 @@ const hydrate = async () => {
    */
   const templateFilename = (window as any)._RSS_TEMPLATE_?.split('.')[0];
 
-  const {default: component} = await routes.find(
-    (route) => route.name === templateFilename
-  )?.getComponent() || {};
+  const { default: component } = (await routes.find((route) => route.name === templateFilename)?.getComponent()) || {};
 
   ReactDOM.hydrate(
     <App
@@ -54,7 +52,7 @@ const hydrate = async () => {
         component: component,
       }}
     />,
-    document.getElementById("root")
+    document.getElementById('root'),
   );
 };
 

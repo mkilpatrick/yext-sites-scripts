@@ -1,9 +1,9 @@
 import { generateTestData } from './generateTestData';
 import { getLocalData } from './getLocalData';
 import { TEMPLATE_PATH } from './constants';
-import fs from "fs";
-import path from "path";
-import { ViteDevServer } from "vite";
+import fs from 'fs';
+import path from 'path';
+import { ViteDevServer } from 'vite';
 import { __dirname } from 'esm-module-paths';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
   vite: ViteDevServer;
   templateFilename: string;
   entityId: string;
-  featureConfig: any,
+  featureConfig: any;
 };
 
 type PageLoaderResult = {
@@ -29,10 +29,7 @@ export const pageLoader = async ({
   featureConfig,
 }: Props): Promise<PageLoaderResult> => {
   // 1. Read index.html
-  let template = fs.readFileSync(
-    path.resolve(process.cwd(), "index.html"),
-    "utf-8"
-  );
+  let template = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf-8');
 
   // 2. Apply vite HTML transforms. This injects the vite HMR client, and
   //    also applies HTML transforms from Vite plugins, e.g. global preambles
@@ -40,7 +37,7 @@ export const pageLoader = async ({
   template = await vite.transformIndexHtml(url, template);
 
   // Get the entry file's directory relative to the current file's directory
-  const entryDir = __dirname().replace(/\/[^\/]+$/, "");
+  const entryDir = __dirname().replace(/\/[^\/]+$/, '');
 
   // 3. Load the server entry. vite.ssrLoadModule automatically transforms
   //    your ESM source code to be usable in Node.js! There is no bundling
