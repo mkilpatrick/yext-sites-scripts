@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": true,
@@ -18,8 +22,24 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationMap": true,
-    "types": ["vite/client"],
+    "types": [
+      "vite/client"
+    ],
   },
-  "include": ["yext-sites-scripts", "index.ts", "server.ts", "entry-server.ts", "bin", "scripts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "yext-sites-scripts",
+    "index.ts",
+    "server.ts",
+    "entry-server.ts",
+    "bin",
+    "scripts"
+  ],
+  "exclude": [
+    "node_moudles"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
