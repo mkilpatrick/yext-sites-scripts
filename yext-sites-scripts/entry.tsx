@@ -32,7 +32,7 @@ const hydrate = async () => {
     return {
       // get the filename from the path and remove its extension, default to index
       name: path.split('/').pop()?.split('.')[0] || 'index',
-      path: path,
+      path,
       getComponent: templates[path],
     };
   });
@@ -49,12 +49,12 @@ const hydrate = async () => {
       page={{
         props: (window as any)._RSS_PROPS_,
         path: window.location.pathname,
-        component: component,
+        component,
       }}
     />,
     document.getElementById('root'),
   );
 };
 
-//@ts-ignore
+// @ts-ignore
 if (!import.meta.env.SSR) hydrate();
