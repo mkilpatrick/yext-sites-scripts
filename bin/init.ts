@@ -1,8 +1,8 @@
-#! /usr/bin/env node
+#! /usr/bin/env node --experimental-specifier-resolution=node
 
 import { program } from "commander";
 import fs from "fs";
-import { runGenerate } from "./init/interface";
+import { runGenerate } from "../scripts/init/interface";
 
 parseCommandLineArgs();
 

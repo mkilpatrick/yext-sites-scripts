@@ -30,8 +30,8 @@
     "lint": "tslint -p tsconfig.json"
   },
   "bin": {
-    "yext-sites-scripts": "dist/bin/yext-sites-scripts.js",
-    "init": "dist/bin/scripts/init.js"
+    "yext-sites-scripts": "dist/bin/init.js",
+    "yss": "dist/bin/yext-sites-scripts.js"
   },
   "files": [
     "dist/**/*"
