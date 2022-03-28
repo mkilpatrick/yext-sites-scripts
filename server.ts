@@ -29,7 +29,7 @@ export const createServer = async () => {
   app.use('*', serverRenderRoute({ vite }));
 
   // start the server on port 3000
-  app.listen(3000, () => process.stdout.write('listening on :3000'));
+  app.listen(3000, () => process.stdout.write('listening on :3000\n'));
 };
 
 function ignoreFavicon(req: any, res: any, next: any) {
