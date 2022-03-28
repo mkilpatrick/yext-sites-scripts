@@ -13,10 +13,10 @@ export async function runGenerate() {
 const Generator: FC = () => {
   interface Step {
     title: string;
-    output: Array<{
+    output: {
       type: "out" | "err";
       content: string;
-    }>;
+    }[];
   }
 
   const [steps, setSteps] = useState<Step[]>([]);
@@ -141,7 +141,7 @@ const Generator: FC = () => {
 
             {error &&
               step.output.map(
-                (output, i) =>
+                (output) =>
                   output.content && (
                     <Text
                       key={i}

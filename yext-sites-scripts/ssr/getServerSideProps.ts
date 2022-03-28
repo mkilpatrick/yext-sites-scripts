@@ -8,16 +8,16 @@ type Props = {
 
 export const getServerSideProps =
   ({ vite }: Props): RequestHandler =>
-    async (req, res) => {
-      const url = req.originalUrl.replace('/data/', '');
+  async (req, res) => {
+    const url = req.originalUrl.replace('/data/', '');
 
-      const { props } = await pageLoader({
-        url,
-        vite,
-        templateFilename: '',
-        entityId: '',
-        featureConfig: null,
-      });
+    const { props } = await pageLoader({
+      url,
+      vite,
+      templateFilename: '',
+      entityId: '',
+      featureConfig: null,
+    });
 
-      res.send(props);
-    };
+    res.send(props);
+  };

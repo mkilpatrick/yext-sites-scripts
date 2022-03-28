@@ -4,10 +4,10 @@ export const generateTestData = async (featureConfig: any, siteId: string) => {
   const generateTestDataExec = spawn('yext', ['sites', 'generate-test-data']);
 
   generateTestDataExec.stdout.on('data', (data: any) => {
-    console.log(`stdout: ${data}`);
+    process.stdout.write(`stdout: ${data}`);
   });
 
   generateTestDataExec.stderr.on('data', (data: any) => {
-    console.log(`stderr: ${data}`);
+    process.stderr.write(`stderr: ${data}`);
   });
 };

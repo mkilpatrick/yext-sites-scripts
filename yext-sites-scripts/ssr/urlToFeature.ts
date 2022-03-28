@@ -3,7 +3,7 @@ export const urlToFeature = (url: string): { feature: string; entityId: string }
   const uriSegments = decodeURI(url).substring(1).split('/');
 
   if (uriSegments.length !== 2) {
-    console.error('Url must be of the form /{featureName}/{entityId}');
+    process.stderr.write('Url must be of the form /{featureName}/{entityId}');
   }
 
   // Remove all whitespaces and lowercase
