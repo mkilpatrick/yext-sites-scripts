@@ -1,6 +1,6 @@
 {
   "name": "@yext/yext-sites-scripts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The default React development toolchain provided by Yext",
   "keywords": [
     "Yext",
@@ -30,7 +30,8 @@
     "lint": "tslint -p tsconfig.json"
   },
   "bin": {
-    "yext-sites-scripts": "dist/bin/yext-sites-scripts.js"
+    "yext-sites-scripts": "dist/bin/yext-sites-scripts.js",
+    "init": "dist/bin/scripts/init.js"
   },
   "files": [
     "dist/**/*"

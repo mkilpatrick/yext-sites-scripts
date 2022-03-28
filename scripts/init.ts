@@ -4,7 +4,6 @@ import { program } from "commander";
 import fs from "fs";
 import { runGenerate } from "./init/interface";
 
-
 parseCommandLineArgs();
 
 function parseCommandLineArgs() {
