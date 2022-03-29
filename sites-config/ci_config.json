@@ -1,0 +1,23 @@
+{
+  "artifactStructure": {
+    "assets": [
+      {
+        "root": "dist/",
+        "pattern": "*"
+      }
+    ],
+    "features": "sites-config/features.json"
+  },
+  "dependencies": {
+    "installDepsCmd": "yarn",
+    "requiredFiles": [
+      "package.json"
+    ]
+  },
+  "buildArtifacts": {
+    "buildCmd": "yarn build"
+  },
+  "livePreview": {
+    "serveSetupCmd": ":"
+  }
+}
