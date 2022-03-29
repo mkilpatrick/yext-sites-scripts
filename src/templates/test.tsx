@@ -16,7 +16,7 @@ export const config = {
     ],
     "filter": {
       "entityTypes": [
-        "product"
+        "location"
       ]
     },
   },
