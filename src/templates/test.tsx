@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { GetServerSideProps } from "../../yext-sites-scripts/ssr/types";
+import React, { useState } from "react";
 
 export const config = {
   name: "Product Test",
@@ -25,7 +24,7 @@ export const config = {
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 //   const cogData = fs.readFileSync('localData/fastfood__631a91f020286f3ddf808a2dd52ce209.json')
-  
+
 //   return JSON.parse(cogData.toString());
 // };
 

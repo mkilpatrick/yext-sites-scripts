@@ -1,6 +1,8 @@
+import React from 'react';
+
 export const getServerSideProps = () => {
-    return { message: "Hello from the server!" };
-  };
+  return { message: "Hello from the server!" };
+};
 
 export const config = {
   name: "index",
@@ -23,13 +25,13 @@ export const config = {
     },
   },
 };
-  
+
 type Props = {
   message: string;
 };
-  
+
 const Homepage = ({ message }: Props) => {
   return <div onClick={() => console.log("hello")}>{message}</div>;
 };
-  
+
 export default Homepage;

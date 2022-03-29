@@ -1,4 +1,4 @@
-type ServerSideArgs = {};
+type ServerSideArgs = Record<string, any>;
 
 export type GetServerSideProps = (data: ServerSideArgs) => any;
 

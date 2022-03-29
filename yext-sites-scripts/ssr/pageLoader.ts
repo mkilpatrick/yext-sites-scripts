@@ -1,4 +1,3 @@
-import { generateTestData } from './generateTestData';
 import { getLocalData } from './getLocalData';
 import { TEMPLATE_PATH } from './constants';
 import fs from 'fs';
@@ -26,6 +25,7 @@ export const pageLoader = async ({
   vite,
   templateFilename,
   entityId,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   featureConfig,
 }: Props): Promise<PageLoaderResult> => {
   // 1. Read index.html
@@ -37,12 +37,12 @@ export const pageLoader = async ({
   template = await vite.transformIndexHtml(url, template);
 
   // Get the entry file's directory relative to the current file's directory
-  const entryDir = __dirname().replace(/\/[^\/]+$/, '');
+  const entryDir = __dirname().replace(/\/[^/]+$/, '');
 
   // 3. Load the server entry. vite.ssrLoadModule automatically transforms
   //    your ESM source code to be usable in Node.js! There is no bundling
   //    required, and provides efficient invalidation similar to HMR.
-  const [{ default: Page, getServerSideProps, config }, { App }] = await Promise.all([
+  const [{ default: Page, getServerSideProps }, { App }] = await Promise.all([
     vite.ssrLoadModule(`/${TEMPLATE_PATH}/${templateFilename}`),
     vite.ssrLoadModule(`${entryDir}/entry`),
   ]);

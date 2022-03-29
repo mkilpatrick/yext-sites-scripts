@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import { Page } from './ssr/types';
-import { createElement } from 'react';
+import React, { createElement } from 'react';
 
 type Props = {
   page?: Page;
@@ -56,5 +56,4 @@ const hydrate = async () => {
   );
 };
 
-// @ts-ignore
 if (!import.meta.env.SSR) hydrate();
