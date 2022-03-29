@@ -19,7 +19,7 @@
     "preview": "vite preview",
     "release": "npm-run-all release:* --parallel release:compile:*",
     "release:clean": "rm -rf dist && mkdir dist",
-    "release:copy": "cp vite.config.ts dist/ && sed -e '/\"private\"/d' package.json > dist/package.json",
+    "release:copy": "sed -e '/\"private\"/d' package.json > dist/package.json",
     "release:compile:esm": "tsc",
     "prepare": "npm run release",
     "prepublishOnly": "npm run lint",
