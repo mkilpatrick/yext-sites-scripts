@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { ViteDevServer } from 'vite';
 import { __dirname } from 'esm-module-paths';
+import { generateTestData } from './generateTestData';
 
 type Props = {
   url: string;
@@ -50,7 +51,7 @@ export const pageLoader = async ({
   let props = {};
 
   // Call generate-test-data
-  // await generateTestData(featureConfig, entityId);
+  await generateTestData(featureConfig, entityId);
 
   // Get the props from the generate-test-data file
   props = await getLocalData(entityId);
