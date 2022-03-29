@@ -3,7 +3,6 @@ import { TEMPLATE_PATH } from './constants';
 
 // Gets the templates's config for use in generate-test-data
 export const getTemplateConfig = async (templateFilename: string): Promise<any> => {
-
   const filepath = path.resolve(process.cwd(), `${TEMPLATE_PATH}/${templateFilename}`);
 
   // Cache bust the module so a page refresh gets the updated module data
