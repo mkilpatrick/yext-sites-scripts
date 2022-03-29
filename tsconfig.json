@@ -27,6 +27,7 @@
     ],
   },
   "include": [
+    "yextssg.d.ts",
     "yext-sites-scripts",
     "index.ts",
     "server.ts",
