@@ -1,4 +1,13 @@
 #! /usr/bin/env node
-import shell from 'shelljs';
+import { build } from 'vite'
+import react from '@vitejs/plugin-react';
+// @ts-ignore
+import yextSSG from 'ssg-plugin';
 
-shell.exec("tsc && vite build");
+(async () => {
+  await build({
+    // root: path.resolve(__dirname, './project'),
+    // base: '/foo/',
+    plugins: [react(), yextSSG.default()],
+  })
+})();
