@@ -48,15 +48,16 @@ export const pageLoader = async ({
     vite.ssrLoadModule(`${entryDir}/entry`),
   ]);
 
-  let props = {};
-
   // Call generate-test-data
   await generateTestData(featureConfig, entityId);
 
-  // Get the props from the generate-test-data file
-  props = await getLocalData(entityId);
+  // Get the data from the generate-test-data file
+  let dataDoc = await getLocalData(entityId);
+  if (getServerSideProps) {
+    dataDoc = await getServerSideProps();
+  }
 
-  if (getServerSideProps) props = await getServerSideProps();
+  const props = { data: {document: { streamOutput: dataDoc }}, __meta: { mode: 'development' } };
 
   return { template, Page, props, App };
 };
