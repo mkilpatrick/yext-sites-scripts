@@ -1,4 +1,4 @@
-#!/usr/bin/env node --experimental-specifier-resolution=node
+#!/usr/bin/env node --loader=ts-node/esm --experimental-specifier-resolution=node
 
 import build from  "../scripts/build.js";
 import dev from  "../scripts/dev.js";
