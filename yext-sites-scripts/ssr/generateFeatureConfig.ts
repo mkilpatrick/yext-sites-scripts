@@ -1,5 +1,5 @@
 import path from 'path';
-import { TEMPLATE_PATH } from './constants';
+import { TEMPLATE_PATH } from './constants.js';
 import { readdir } from 'fs/promises';
 
 // Generates a feature config from the src/templates for use in generate-test-data

@@ -37,13 +37,13 @@
     "dist/**/*"
   ],
   "dependencies": {
+    "@yext/vite-plugin-yext-sites-ssg": "mancusi/ssg-plugin#a37a5ec829dc1a5a79fab1bb45a2a36a1d77c70a",
     "cli-spinners": "^2.6.1",
     "commander": "^9.1.0",
     "esm-module-paths": "^1.1.1",
     "express": "^4.17.3",
     "ink": "^3.2.0",
     "shelljs": "^0.8.5",
-    "ts-node": "^10.7.0",
     "typescript": "^4.6.2"
   },
   "devDependencies": {
@@ -52,19 +52,19 @@
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.10",
     "@types/shelljs": "^0.8.11",
+    "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.6.1"
+    "prettier": "^2.6.1",
+    "react-dom": "^17.0.2"
   },
   "peerDependencies": {
     "@vitejs/plugin-react": "^1.2.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "ssg-plugin": "^0.0.2",
     "vite": "^2.8.6"
   }
 }

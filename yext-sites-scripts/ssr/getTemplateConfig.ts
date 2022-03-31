@@ -1,5 +1,5 @@
 import path from 'path';
-import { TEMPLATE_PATH } from './constants';
+import { TEMPLATE_PATH } from './constants.js';
 
 // Gets the templates's config for use in generate-test-data
 export const getTemplateConfig = async (templateFilename: string): Promise<any> => {

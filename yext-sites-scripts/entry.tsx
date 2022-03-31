@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { Page } from './ssr/types';
+import { Page } from './ssr/types.js';
 import React, { createElement } from 'react';
 
 type Props = {

@@ -2,7 +2,7 @@
 
 import { program } from "commander";
 import fs from "fs";
-import { runGenerate } from "../scripts/init/interface";
+import { runGenerate } from "../scripts/init/interface.js";
 
 parseCommandLineArgs();
 

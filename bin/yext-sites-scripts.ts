@@ -1,8 +1,8 @@
-#!/usr/bin/env node --loader=ts-node/esm --experimental-specifier-resolution=node
+#!/usr/bin/env node --experimental-specifier-resolution=node
 
-import build from  "../scripts/build";
-import dev from  "../scripts/dev";
-import preview from  "../scripts/preview";
+import build from  "../scripts/build.js";
+import dev from  "../scripts/dev.js";
+import preview from  "../scripts/preview.js";
 
 const [, , ...args] = process.argv;
 
@@ -15,12 +15,12 @@ if (!args.some(arg => ["dev", "build", "preview"].includes(arg))) {
 
 switch (command) {
     case "build":
-        await build();
+        build();
         break;
     case "dev":
-        await dev();
+        dev();
         break;
     case "preview":
-        await preview();
+        preview();
         break;
 }

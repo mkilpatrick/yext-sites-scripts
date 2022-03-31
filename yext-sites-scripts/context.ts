@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { Page } from './ssr/types';
+import { Page } from './ssr/types.js';
 
 type Route = {
   name: string;

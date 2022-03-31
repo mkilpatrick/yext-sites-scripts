@@ -1,8 +1,8 @@
 import { render, Text } from "ink";
 import React, { FC, useEffect, useState, Fragment } from "react";
 import { spawn } from "child_process";
-import { generate } from './generate';
-import Spinner from "./spinner";
+import { generate } from './generate.js';
+import Spinner from "./spinner.js";
 
 export async function runGenerate() {
   return new Promise<void>(() => {

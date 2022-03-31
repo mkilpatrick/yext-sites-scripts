@@ -1,7 +1,7 @@
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
-import { serverRenderRoute } from './yext-sites-scripts/ssr/serverRenderRoute';
-import { getServerSideProps } from './yext-sites-scripts/ssr/getServerSideProps';
+import { serverRenderRoute } from './yext-sites-scripts/ssr/serverRenderRoute.js';
+import { getServerSideProps } from './yext-sites-scripts/ssr/getServerSideProps.js';
 import react from '@vitejs/plugin-react';
 
 export const createServer = async () => {

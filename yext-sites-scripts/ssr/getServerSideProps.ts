@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express-serve-static-core';
 import { ViteDevServer } from 'vite';
-import { pageLoader } from './pageLoader';
+import { pageLoader } from './pageLoader.js';
 
 type Props = {
   vite: ViteDevServer;

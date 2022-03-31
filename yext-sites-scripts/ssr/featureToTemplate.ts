@@ -1,5 +1,5 @@
 import path from 'path';
-import { TEMPLATE_PATH } from './constants';
+import { TEMPLATE_PATH } from './constants.js';
 import { readdir } from 'fs/promises';
 
 // Determines the template file of a given feature (from the exported config)

@@ -1,10 +1,10 @@
-import { getLocalData } from './getLocalData';
+import { getLocalData } from './getLocalData.js';
 import { TEMPLATE_PATH } from './constants';
 import fs from 'fs';
 import path from 'path';
 import { ViteDevServer } from 'vite';
 import { __dirname } from 'esm-module-paths';
-import { generateTestData } from './generateTestData';
+import { generateTestData } from './generateTestData.js';
 
 type Props = {
   url: string;

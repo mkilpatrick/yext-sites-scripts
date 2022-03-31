@@ -1,12 +1,12 @@
-import { buildFeatureConfig } from './buildFeatureConfig';
-import { getTemplateConfig } from './getTemplateConfig';
+import { buildFeatureConfig } from './buildFeatureConfig.js';
+import { getTemplateConfig } from './getTemplateConfig.js';
 import { RequestHandler } from 'express-serve-static-core';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { ViteDevServer } from 'vite';
-import { featureToTemplate } from './featureToTemplate';
-import { pageLoader } from './pageLoader';
-import { urlToFeature } from './urlToFeature';
+import { featureToTemplate } from './featureToTemplate.js';
+import { pageLoader } from './pageLoader.js';
+import { urlToFeature } from './urlToFeature.js';
 
 type Props = {
   vite: ViteDevServer;
