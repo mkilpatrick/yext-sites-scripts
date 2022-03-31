@@ -20,7 +20,7 @@
     "release": "npm-run-all release:* --parallel release:compile:*",
     "release:clean": "rm -rf dist && mkdir dist",
     "release:copy": "sed -e '/\"private\"/d' package.json > dist/package.json",
-    "release:compile:esm": "tsc",
+    "release:compile:esm": "npx tsc && node bundler.js",
     "prepare": "npm run release",
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
