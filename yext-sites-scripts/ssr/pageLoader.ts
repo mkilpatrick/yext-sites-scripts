@@ -57,7 +57,7 @@ export const pageLoader = async ({
     dataDoc = await getServerSideProps();
   }
 
-  const props = { data: {document: { streamOutput: dataDoc }}, __meta: { mode: 'development' } };
+  const props = { data: { document: { streamOutput: dataDoc } }, __meta: { mode: 'development' } };
 
   return { template, Page, props, App };
 };

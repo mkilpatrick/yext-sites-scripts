@@ -1,3 +1,3 @@
 import { createServer } from "../server";
 
-await createServer();
+export default createServer;

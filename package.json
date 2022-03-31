@@ -64,7 +64,7 @@
     "@vitejs/plugin-react": "^1.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "vite": "^2.8.6",
-    "ssg-plugin": "git@github.com:mancusi/ssg-plugin.git#19cad197f8094e8458309b490ed9343c18245f9e"
+    "ssg-plugin": "^0.0.2",
+    "vite": "^2.8.6"
   }
 }

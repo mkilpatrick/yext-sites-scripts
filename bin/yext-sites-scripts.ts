@@ -1,6 +1,8 @@
 #!/usr/bin/env node --loader=ts-node/esm --experimental-specifier-resolution=node
 
-export { }
+import build from  "../scripts/build";
+import dev from  "../scripts/dev";
+import preview from  "../scripts/preview";
 
 const [, , ...args] = process.argv;
 
@@ -11,4 +13,14 @@ if (!args.some(arg => ["dev", "build", "preview"].includes(arg))) {
     process.exit(1);
 }
 
-await import(`../scripts/${command}.js`);
+switch (command) {
+    case "build":
+        await build();
+        break;
+    case "dev":
+        await dev();
+        break;
+    case "preview":
+        await preview();
+        break;
+}
