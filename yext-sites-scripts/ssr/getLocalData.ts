@@ -10,7 +10,7 @@ export const getLocalData = async (uid: string) => {
   for (const fileName of dir) {
     const data = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), `${LOCAL_DATA_PATH}/${fileName}`)).toString());
 
-    if (data.uid?.toString() === uid) {
+    if (data.id?.toString() === uid) {
       return data;
     }
   }
