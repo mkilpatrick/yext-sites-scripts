@@ -27,7 +27,8 @@
     "version": "npm run format && git add -A",
     "postversion": "git push && git push --tags",
     "format": "prettier --write \"yext-sites-scripts/**/*.ts\" \"yext-sites-scripts/**/*.tsx\" \"server.ts\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "devbuild": "npm run release:clean && node bundler.js"
   },
   "bin": {
     "yext-sites-scripts": "dist/bin/init.js",
