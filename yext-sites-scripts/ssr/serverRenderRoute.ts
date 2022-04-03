@@ -18,8 +18,8 @@ export const serverRenderRoute =
     const url = req.originalUrl;
 
     const { feature, entityId } = urlToFeature(url);
-    const templateFilename = await featureToTemplate(feature);
-    const templateConfig = await getTemplateConfig(templateFilename);
+    const templateFilename = await featureToTemplate(vite, feature);
+    const templateConfig = await getTemplateConfig(vite, templateFilename);
     const featureConfig = buildFeatureConfig(templateConfig);
 
     try {
