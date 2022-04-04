@@ -8,7 +8,8 @@ const [, , ...args] = process.argv;
 
 const [command] = args;
 
-if (!args.some(arg => ["dev", "build", "preview"].includes(arg))) {
+process.stdout.write("args" + JSON.stringify(args, null, "  "));
+if (!args.some(arg => ["dev", "build", "preview", "init"].includes(arg))) {
     process.stderr.write("Command not found");
     process.exit(1);
 }
