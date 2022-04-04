@@ -1,7 +1,7 @@
 // Builds a featureConfig suitable for use with generate-test-data.
 export const buildFeatureConfig = (templateConfig: any): any => {
   return {
-    locales: ["en"],
+    locales: ['en'],
     features: [
       {
         name: templateConfig.name,

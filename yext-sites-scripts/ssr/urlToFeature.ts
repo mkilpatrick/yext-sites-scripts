@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import chalk from 'chalk';
 
 export const urlToFeature = (url: string): { feature: string; entityId: string } => {
   // URI decode and remove leading slash: /foo/123
