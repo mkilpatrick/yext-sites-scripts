@@ -38,7 +38,7 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@yext/vite-plugin-yext-sites-ssg": "mancusi/ssg-plugin#a37a5ec829dc1a5a79fab1bb45a2a36a1d77c70a",
+    "@yext/vite-plugin-yext-sites-ssg": "mancusi/ssg-plugin#5ba89bcb3beb449088b474c543f3e4560621b445",
     "cli-spinners": "^2.6.1",
     "commander": "^9.1.0",
     "esm-module-paths": "^1.1.1",
