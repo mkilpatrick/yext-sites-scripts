@@ -49,7 +49,7 @@ export const pageLoader = async ({
   ]);
 
   // Call generate-test-data
-  await generateTestData(featureConfig, entityId);
+  // let dataDoc = await generateTestData(featureConfig, entityId);
 
   // Get the data from the generate-test-data file
   let dataDoc = await getLocalData(entityId);
