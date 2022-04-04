@@ -31,7 +31,6 @@
     "devbuild": "npm run release:clean && node bundler.js"
   },
   "bin": {
-    "yext-sites-scripts": "dist/bin/init.js",
     "yss": "dist/bin/yext-sites-scripts.js"
   },
   "files": [
@@ -45,7 +44,8 @@
     "express": "^4.17.3",
     "ink": "^3.2.0",
     "shelljs": "^0.8.5",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.18",
@@ -60,8 +60,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.6.1",
-    "react-dom": "^17.0.2"
+    "prettier": "^2.6.1"
   },
   "peerDependencies": {
     "@vitejs/plugin-react": "^1.2.0",

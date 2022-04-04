@@ -1,5 +1,5 @@
 #!/usr/bin/env node --experimental-specifier-resolution=node
-
+import init from "../scripts/init.js"
 import build from  "../scripts/build.js";
 import dev from  "../scripts/dev.js";
 import preview from  "../scripts/preview.js";
@@ -22,5 +22,8 @@ switch (command) {
         break;
     case "preview":
         preview();
+        break;
+    case "init":
+        init();
         break;
 }
