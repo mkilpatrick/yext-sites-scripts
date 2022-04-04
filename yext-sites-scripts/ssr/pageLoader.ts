@@ -4,7 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import { ViteDevServer } from 'vite';
 import { __dirname } from 'esm-module-paths';
-import { generateTestData } from './generateTestData.js';
 
 type Props = {
   url: string;

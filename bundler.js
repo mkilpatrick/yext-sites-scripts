@@ -3,7 +3,7 @@ import glob from "glob";
 
 const builds = []
 
-const files = glob.sync("./{scripts,yext-sites-scripts,bin}/**/*\.*");
+const files = glob.sync("./{scripts,yext-sites-scripts,bin}/**/*\\.*");
 
 const commonBuildOpts = {
   bundle: false,
@@ -22,4 +22,4 @@ try {
     outdir: "dist/",
     format: "esm",
   }));
-} catch (e) {console.error(e);}
+} catch (e) { console.error(e); }

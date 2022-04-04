@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FC } from 'react';
+import React from 'react';
 import { Text } from 'ink';
 import spinners from 'cli-spinners';
 import type { SpinnerName } from 'cli-spinners';
