@@ -9,7 +9,7 @@ const [, , ...args] = process.argv;
 const [command] = args;
 
 if (!args.some(arg => ["dev", "build", "preview", "init"].includes(arg))) {
-    process.stderr.write("Command not found");
+    process.stdout.write("Command not found\n");
     process.exit(1);
 }
 
