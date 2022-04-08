@@ -3,22 +3,26 @@ import { spawn } from 'child_process';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const generateTestData = async (featureConfig: any, entityId: string): Promise<any> => {
   return new Promise((resolve, reject) => {
-    const generateTestDataExec = spawn('yext', [
-      'sites',
-      'generate-test-data',
-      '--featureName',
-      `'${featureConfig?.features[0]?.name}'`,
-      '--entityId',
-      entityId,
-      '--featuresConfig',
-      `'${JSON.stringify(featureConfig)}'`,
-      '--locale',
-      'en',
-      '--printDocuments',
-    ], {
-      stdio: ["pipe", "pipe", "pipe"],
-      shell: true,
-    });
+    const generateTestDataExec = spawn(
+      'yext',
+      [
+        'sites',
+        'generate-test-data',
+        '--featureName',
+        `'${featureConfig?.features[0]?.name}'`,
+        '--entityId',
+        entityId,
+        '--featuresConfig',
+        `'${JSON.stringify(featureConfig)}'`,
+        '--locale',
+        'en',
+        '--printDocuments',
+      ],
+      {
+        stdio: ['pipe', 'pipe', 'pipe'],
+        shell: true,
+      },
+    );
 
     let testData = '';
 
