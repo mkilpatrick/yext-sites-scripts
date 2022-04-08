@@ -38,6 +38,14 @@ export const serverRenderRoute =
           dynamicGenerateData,
         });
 
+        // Change the langauge on the i18n object based on entity data
+        const { data } = props;
+        const { document } = data;
+        const { streamOutput } = document;
+        const { locale } = streamOutput;
+        // TODO: validate this is a valid langauge?
+        i18n.changeLanguage(locale);
+
         // render the component to its html
         // Since we are on the server using plain TS, and outside
         // of Vite, we are not using JSX here
@@ -58,6 +66,8 @@ export const serverRenderRoute =
           `<script type="text/javascript">
             window._RSS_PROPS_ = ${JSON.stringify(props)};
             window._RSS_TEMPLATE_ = '${templateFilename}';
+            window._RSS_I18N_ = ${JSON.stringify(i18n.getDataByLanguage(locale))};
+            window._RSS_LOCALE_ = '${locale}';
           </script></head>`,
         );
 

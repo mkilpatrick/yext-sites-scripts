@@ -4,17 +4,38 @@ import { serverRenderRoute } from './yext-sites-scripts/ssr/serverRenderRoute.js
 import { getServerSideProps } from './yext-sites-scripts/ssr/getServerSideProps.js';
 import react from '@vitejs/plugin-react';
 import i18n from 'i18next';
+import fs from 'fs';
+import path from 'path';
+
+const I18N_PATH = 'src/i18n';
+// Expects a file structure like
+// i18n/
+//  ├── en/
+//  │   └── translation.json
+//  └── [locale]/
+//      └── [namespace].json
+const getLocalizationResources = () => {
+  const i18nDir = path.resolve(process.cwd(), `${I18N_PATH}`);
+  let resources = {} as any;
+  fs.readdirSync(i18nDir, {withFileTypes: true}).forEach(localeDir => {
+    if (!localeDir.isDirectory) { return; }
+
+    resources[localeDir.name] = {};
+    const i18nLocalePath = path.resolve(process.cwd(), `${I18N_PATH}`, localeDir.name);
+    fs.readdirSync(i18nLocalePath).forEach(namespace => {
+      const namespacePath = path.resolve(process.cwd(), `${I18N_PATH}`, localeDir.name, namespace);
+      const translations = fs.readFileSync(namespacePath, 'utf-8');
+      resources[localeDir.name][path.parse(namespace).name] = JSON.parse(translations);
+    });
+  });
+
+  return resources;
+}
 
 const i18nOptions = {
   lng: 'en',
   fallbackLng: 'en',
-  resources: {
-    en: {
-      translation: {
-        "message 1": "hello world",
-      },
-    },
-  },
+  resources: getLocalizationResources(),
   interpolation: {
     escapeValue: false // react already safes from xss
   },
