@@ -12,10 +12,11 @@ import fs from 'fs';
 type Props = {
   vite: ViteDevServer;
   dynamicGenerateData: boolean;
+  i18n?: any
 };
 
 export const serverRenderRoute =
-  ({ vite, dynamicGenerateData }: Props): RequestHandler =>
+  ({ vite, i18n, dynamicGenerateData }: Props): RequestHandler =>
     async (req, res, next) => {
       const url = req.originalUrl;
 
@@ -47,6 +48,7 @@ export const serverRenderRoute =
               path: req.originalUrl,
               component: Page,
             },
+            i18n,
           }),
         );
 

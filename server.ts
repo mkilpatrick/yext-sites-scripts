@@ -3,10 +3,28 @@ import { createServer as createViteServer } from 'vite';
 import { serverRenderRoute } from './yext-sites-scripts/ssr/serverRenderRoute.js';
 import { getServerSideProps } from './yext-sites-scripts/ssr/getServerSideProps.js';
 import react from '@vitejs/plugin-react';
+import i18n from 'i18next';
+
+const i18nOptions = {
+  lng: 'en',
+  fallbackLng: 'en',
+  resources: {
+    en: {
+      translation: {
+        "message 1": "hello world",
+      },
+    },
+  },
+  interpolation: {
+    escapeValue: false // react already safes from xss
+  },
+  debug: true,
+};
 
 export const createServer = async (dynamicGenerateData: boolean) => {
   // creates a standard express app
   const app = express();
+  i18n.init(i18nOptions);
 
   // create vite using ssr mode
   const vite = await createViteServer({
@@ -26,7 +44,7 @@ export const createServer = async (dynamicGenerateData: boolean) => {
   app.use('/data/*', getServerSideProps({ vite }));
 
   // when a page is requested, call our serverRenderRoute method
-  app.use('*', serverRenderRoute({ vite, dynamicGenerateData }));
+  app.use('*', serverRenderRoute({ vite, i18n, dynamicGenerateData }));
 
   // start the server on port 3000
   app.listen(3000, () => process.stdout.write('listening on :3000\n'));

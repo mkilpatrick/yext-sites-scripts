@@ -4,6 +4,7 @@ import { Page } from './ssr/types.js';
 
 export type Props = {
   page?: Page;
+  i18n?: any;
 };
 
 export const hydrate = async (App: FunctionComponent<Props>) => {
