@@ -1,8 +1,8 @@
 #!/usr/bin/env node --experimental-specifier-resolution=node
 import init from "../scripts/init.js"
-import build from  "../scripts/build.js";
-import dev from  "../scripts/dev.js";
-import preview from  "../scripts/preview.js";
+import build from "../scripts/build.js";
+import dev from "../scripts/dev.js";
+import preview from "../scripts/preview.js";
 
 const [, , ...args] = process.argv;
 
@@ -23,7 +23,13 @@ switch (command) {
     case "preview":
         preview();
         break;
-    case "init":
-        init();
+    case "init": {
+        let folderToCreate = null;
+
+        if (args.length == 2) {
+            folderToCreate = args[1];
+        }
+        init(folderToCreate);
         break;
+    }
 }
