@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const generateTestData = async (featureConfig: any, entityId: string): Promise<any> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const generateTestDataExec = spawn(
       'yext',
       [
@@ -42,7 +42,7 @@ export const generateTestData = async (featureConfig: any, entityId: string): Pr
       process.stderr.write(chunk);
     });
 
-    generateTestDataExec.on('close', (code, signal) => {
+    generateTestDataExec.on('close', () => {
       testData = JSON.parse(testData.trim());
       resolve(testData);
     });
