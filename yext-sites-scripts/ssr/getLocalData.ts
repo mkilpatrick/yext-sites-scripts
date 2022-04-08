@@ -5,15 +5,23 @@ import { readdir } from 'fs/promises';
 const LOCAL_DATA_PATH = 'localData';
 
 export const getLocalData = async (entityId: string) => {
-  const dir = await readdir(LOCAL_DATA_PATH);
+  try {
+    const dir = await readdir(LOCAL_DATA_PATH);
 
-  for (const fileName of dir) {
-    const data = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), `${LOCAL_DATA_PATH}/${fileName}`)).toString());
+    for (const fileName of dir) {
+      const data = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), `${LOCAL_DATA_PATH}/${fileName}`)).toString());
 
-    if (data.id?.toString() === entityId) {
-      return data;
+      if (data.id?.toString() === entityId) {
+        return data;
+      }
+    }
+  } catch (err: any) {
+    if (err.code === 'ENOENT') {
+      throw 'No localData exists. Please run `yext sites generate-test-data`';
+    } else {
+      throw err;
     }
   }
 
-  return null;
+  throw `No localData files match entityId ${entityId}`;
 };
