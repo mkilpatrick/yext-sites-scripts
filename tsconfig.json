@@ -28,6 +28,7 @@
   },
   "include": [
     "yextssg.d.ts",
+    "i18next-fs-backend.d.ts",
     "yext-sites-scripts",
     "index.ts",
     "server.ts",
