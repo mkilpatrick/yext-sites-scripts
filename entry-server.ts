@@ -1,3 +1,10 @@
 import { createServer } from "./server.js";
 
-await createServer();
+const [, , ...args] = process.argv;
+
+if (args.some(arg => ["dynamic"].includes(arg))) {
+  await createServer(true);
+} else {
+  await createServer(false);
+}
+

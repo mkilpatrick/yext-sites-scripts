@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { ViteDevServer } from 'vite';
 import { __dirname } from 'esm-module-paths';
+import { generateTestData } from './generateTestData.js';
 
 type Props = {
   url: string;
@@ -11,6 +12,7 @@ type Props = {
   templateFilename: string;
   entityId: string;
   featureConfig: any;
+  dynamicGenerateData: boolean;
 };
 
 type PageLoaderResult = {
@@ -25,8 +27,8 @@ export const pageLoader = async ({
   vite,
   templateFilename,
   entityId,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   featureConfig,
+  dynamicGenerateData,
 }: Props): Promise<PageLoaderResult> => {
   // 1. Read index.html
   let template = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf-8');
@@ -47,11 +49,15 @@ export const pageLoader = async ({
     vite.ssrLoadModule(`${entryDir}/entry`),
   ]);
 
-  // Call generate-test-data
-  // let dataDoc = await generateTestData(featureConfig, entityId);
+  let dataDoc;
+  if (dynamicGenerateData) {
+    // Call generate-test-data
+    dataDoc = await generateTestData(featureConfig, entityId);
+  } else {
+    // Get the data from localData
+    dataDoc = await getLocalData(entityId);
+  }
 
-  // Get the data from the generate-test-data file
-  let dataDoc = await getLocalData(entityId);
   if (getServerSideProps) {
     dataDoc = await getServerSideProps();
   }

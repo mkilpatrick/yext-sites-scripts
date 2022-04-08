@@ -4,7 +4,7 @@ import { serverRenderRoute } from './yext-sites-scripts/ssr/serverRenderRoute.js
 import { getServerSideProps } from './yext-sites-scripts/ssr/getServerSideProps.js';
 import react from '@vitejs/plugin-react';
 
-export const createServer = async () => {
+export const createServer = async (dynamicGenerateData: boolean) => {
   // creates a standard express app
   const app = express();
 
@@ -26,7 +26,7 @@ export const createServer = async () => {
   app.use('/data/*', getServerSideProps({ vite }));
 
   // when a page is requested, call our serverRenderRoute method
-  app.use('*', serverRenderRoute({ vite }));
+  app.use('*', serverRenderRoute({ vite, dynamicGenerateData }));
 
   // start the server on port 3000
   app.listen(3000, () => process.stdout.write('listening on :3000\n'));
