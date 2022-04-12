@@ -50,12 +50,15 @@ export const pageLoader = async ({
   ]);
 
   let dataDoc;
-  if (dynamicGenerateData) {
-    // Call generate-test-data
-    dataDoc = await generateTestData(featureConfig, entityId);
-  } else {
-    // Get the data from localData
-    dataDoc = await getLocalData(entityId);
+  // Don't try to pull stream data if one isn't defined. This is primarily for static pages.
+  if (featureConfig.streams) {
+    if (dynamicGenerateData) {
+      // Call generate-test-data
+      dataDoc = await generateTestData(featureConfig, entityId);
+    } else {
+      // Get the data from localData
+      dataDoc = await getLocalData(entityId);
+    }
   }
 
   if (getServerSideProps) {
