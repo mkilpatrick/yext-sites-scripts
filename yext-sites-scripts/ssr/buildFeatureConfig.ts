@@ -10,6 +10,6 @@ export const buildFeatureConfig = (templateConfig: any): any => {
         entityPageSet: {},
       },
     ],
-    streams: [templateConfig.stream],
+    streams: templateConfig.stream,
   };
 };
