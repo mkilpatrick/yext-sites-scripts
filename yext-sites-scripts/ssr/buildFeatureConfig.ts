@@ -11,6 +11,6 @@ export const buildFeatureConfig = (templateConfig: any): any => {
         ...(templateConfig.stream ? { entityPageSet: {} } : { staticPage: {} }),
       },
     ],
-    ...(templateConfig.stream ? { streams: templateConfig.stream } : ''),
+    ...(templateConfig.stream ? { streams: [templateConfig.stream] } : ''),
   };
 };
