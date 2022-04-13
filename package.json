@@ -40,12 +40,13 @@
     "@yext/vite-plugin-yext-sites-ssg": "mancusi/ssg-plugin#5ba89bcb3beb449088b474c543f3e4560621b445",
     "cli-spinners": "^2.6.1",
     "commander": "^9.1.0",
+    "cross-fetch": "^3.1.5",
     "esm-module-paths": "^1.1.1",
     "express": "^4.17.3",
     "ink": "^3.2.0",
+    "react-dom": "^17.0.2",
     "shelljs": "^0.8.5",
-    "typescript": "^4.6.2",
-    "react-dom": "^17.0.2"
+    "typescript": "^4.6.2"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.18",
