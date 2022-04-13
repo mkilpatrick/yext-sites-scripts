@@ -43,7 +43,10 @@ export const generateTestData = async (featureConfig: any, entityId: string): Pr
     });
 
     generateTestDataExec.on('close', () => {
-      testData = JSON.parse(testData.trim());
+      if (testData) {
+        testData = JSON.parse(testData.trim());
+      }
+
       resolve(testData);
     });
 
