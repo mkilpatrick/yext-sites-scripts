@@ -5,9 +5,9 @@ import { importFresh } from './moduleImports.js';
 import { ViteDevServer } from 'vite';
 
 // Determines the template file of a given feature (from the exported config)
-export const featureToTemplate = async (devserver: ViteDevServer, feature: string): Promise<string> => {
+export const featureToTemplate = async (devserver: ViteDevServer, feature: string): Promise<string | null> => {
   const dir = await readdir(`./${TEMPLATE_PATH}`);
-  let templateFilename = 'index.tsx'; // fallback to index page
+  let templateFilename = null;
   for (const fileName of dir) {
     const filepath = path.resolve(process.cwd(), `${TEMPLATE_PATH}/${fileName}`);
 
