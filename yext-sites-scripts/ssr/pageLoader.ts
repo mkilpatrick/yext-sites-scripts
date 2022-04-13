@@ -44,7 +44,7 @@ export const pageLoader = async ({
   // 3. Load the server entry. vite.ssrLoadModule automatically transforms
   //    your ESM source code to be usable in Node.js! There is no bundling
   //    required, and provides efficient invalidation similar to HMR.
-  const [{ default: Page, getServerSideProps }, { App }] = await Promise.all([
+  const [{ default: Page, getStaticProps }, { App }] = await Promise.all([
     vite.ssrLoadModule(`/${TEMPLATE_PATH}/${templateFilename}`),
     vite.ssrLoadModule(`${entryDir}/entry`),
   ]);
@@ -61,8 +61,12 @@ export const pageLoader = async ({
     }
   }
 
-  if (getServerSideProps) {
-    dataDoc = await getServerSideProps();
+  if (getStaticProps) {
+    const staticProps = await getStaticProps();
+    dataDoc = {
+      ...dataDoc,
+      ...staticProps,
+    }
   }
 
   const props = { data: { document: { streamOutput: dataDoc } }, __meta: { mode: 'development' } };
