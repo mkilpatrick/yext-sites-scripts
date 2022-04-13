@@ -5,11 +5,12 @@ export const buildFeatureConfig = (templateConfig: any): any => {
     features: [
       {
         name: templateConfig.name,
-        streamId: templateConfig.streamId,
+        ...(templateConfig.streamId ? { streamId: templateConfig.streamId } : ''),
         templateType: 'JS',
-        entityPageSet: {},
+        // Assume this is a static page if there is no stream defined
+        ...(templateConfig.stream ? { entityPageSet: {} } : { staticPage: {} }),
       },
     ],
-    streams: templateConfig.stream,
+    ...(templateConfig.stream ? { streams: templateConfig.stream } : ''),
   };
 };
