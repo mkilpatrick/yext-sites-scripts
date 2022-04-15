@@ -39,14 +39,16 @@ export const pageLoader = async ({
   template = await vite.transformIndexHtml(url, template);
 
   // Get the entry file's directory relative to the current file's directory
-  const entryDir = __dirname().replace(/\/[^/]+$/, '');
+  // const entryDir = __dirname().replace(/\/[^/]+$/, '');
+  const entryDir = process.cwd();
 
   // 3. Load the server entry. vite.ssrLoadModule automatically transforms
   //    your ESM source code to be usable in Node.js! There is no bundling
   //    required, and provides efficient invalidation similar to HMR.
+  console.log("entryDir: " + entryDir);
   const [{ default: Page, getStaticProps }, { App }] = await Promise.all([
     vite.ssrLoadModule(`/${TEMPLATE_PATH}/${templateFilename}`),
-    vite.ssrLoadModule(`${entryDir}/entry`),
+    vite.ssrLoadModule(`/entry`),
   ]);
 
   let dataDoc;

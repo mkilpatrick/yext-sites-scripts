@@ -7,7 +7,12 @@ export type Props = {
 };
 
 export const hydrate = async (App: FunctionComponent<Props>) => {
-  if (import.meta.env.SSR) return;
+  console.log('hydrate func');
+  if (import.meta.env.SSR) {
+    console.log('server side, no hydrate');
+    return;
+  }
+  console.log('client side, hydrating');
 
   type Route = {
     name: string;
