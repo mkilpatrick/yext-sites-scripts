@@ -5,4 +5,4 @@ export const App: FC<Props> = ({ page }: Props) => {
   return createElement(page?.component, page?.props);
 };
 
-hydrate(App);
+if (!import.meta.env.SSR) hydrate(App);
