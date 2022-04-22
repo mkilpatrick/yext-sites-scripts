@@ -9,10 +9,14 @@ export const I18N_PATH = 'src/i18n';
 //  └── [locale]/
 //      └── [namespace].json
 export const getLocalizationResources = () => {
+  // Skips parsing any directories in 'blacklistDirs'
+  const blacklistDirs = ['missing', 'smartling'];
+
   const i18nDir = path.resolve(process.cwd(), `${I18N_PATH}`);
   let resources = {} as any;
   fs.readdirSync(i18nDir, {withFileTypes: true}).forEach(localeDir => {
     if (!localeDir.isDirectory) { return; }
+    if (blacklistDirs.includes(localeDir.name)) { return; }
 
     resources[localeDir.name] = {};
     const i18nLocalePath = path.resolve(process.cwd(), `${I18N_PATH}`, localeDir.name);
