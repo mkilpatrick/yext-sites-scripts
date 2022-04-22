@@ -18,7 +18,7 @@ type Props = {
 export const serverRenderRoute =
   ({ vite, i18n, dynamicGenerateData }: Props): RequestHandler =>
     async (req, res, next) => {
-      const url = req.originalUrl;
+      const url = req.baseUrl;
 
       const { feature, entityId } = urlToFeature(url);
       const templateFilename = await featureToTemplate(vite, feature);
